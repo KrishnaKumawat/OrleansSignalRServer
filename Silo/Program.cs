@@ -15,7 +15,6 @@ static async Task<ISiloHost> StartSilo()
     string connString = "Server=localhost;Port=5432;User Id=postgres;Password=123456a;Database=test01";
     string invariant = "Npgsql";
     var host = new SiloHostBuilder()
-
         .UseSignalR()
         .Configure<ClusterOptions>(option =>
         {
@@ -34,6 +33,7 @@ static async Task<ISiloHost> StartSilo()
             options.UseJsonFormat = true;
         })
         .AddMemoryGrainStorage(SignalR.Orleans.Constants.STORAGE_PROVIDER)
+
         .ConfigureApplicationParts(parts => parts.AddApplicationPart(typeof(UserNotificationGrain).Assembly).WithReferences())
         .ConfigureEndpoints(11111, 30000)
         .Configure<EndpointOptions>(options => options.AdvertisedIPAddress = IPAddress.Loopback)

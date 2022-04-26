@@ -27,7 +27,7 @@ namespace OrleansSignalR
                 webBuilder.UseSetting(WebHostDefaults.DetailedErrorsKey, "true");
                 webBuilder.UseStartup<Startup>();
             })
-            
+
             .ConfigureLogging(logging =>
             {
                 logging.AddConsole();

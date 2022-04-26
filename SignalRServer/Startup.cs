@@ -38,7 +38,7 @@ namespace OrleansSignalR
                     options.ConnectionString = connString;
                     options.Invariant = invariant;
                 })
-                
+                .AddSimpleMessageStreamProvider(SignalR.Orleans.Constants.STREAM_PROVIDER, opt => opt.FireAndForgetDelivery = true)
                 .ConfigureApplicationParts(parts =>
                 {
                     parts.AddApplicationPart(typeof(IClientGrain).Assembly).WithReferences();
