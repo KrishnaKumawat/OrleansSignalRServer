@@ -38,7 +38,7 @@ namespace OrleansSignalR
                     options.ConnectionString = connString;
                     options.Invariant = invariant;
                 })
-                .UseSignalR()
+                
                 .ConfigureApplicationParts(parts =>
                 {
                     parts.AddApplicationPart(typeof(IClientGrain).Assembly).WithReferences();
@@ -67,7 +67,6 @@ namespace OrleansSignalR
             });
         }
 
-        #region 002
         private static Func<Exception, Task<bool>> CreateRetryFilter(int maxAttempts = 5)
         {
             var attempt = 0;
@@ -86,6 +85,5 @@ namespace OrleansSignalR
                 return true;
             }
         }
-        #endregion
     }
 }
